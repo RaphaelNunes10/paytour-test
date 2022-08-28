@@ -45,7 +45,6 @@
                 item-value="text"
                 :rules="[rules.required]"
                 outlined
-                return-object
                 @keyup.enter="checkAndRegister()"
               />
               <v-textarea
@@ -94,7 +93,10 @@ export default {
     return {
       registerDialog: false,
 
+      ip: null,
+
       newData: {
+        ip: '',
         nome: '',
         email: '',
         telefone: '',
@@ -145,9 +147,9 @@ export default {
         this.isEmailValid = false
       }
     },
-    'newData.telefone'() {
-      this.newData.telefone = this.newData.telefone.replace(/\D/g, '')
-    },
+  },
+  mounted() {
+    this.getIP()
   },
   methods: {
     ...mapActions('Registration', ['register']),
@@ -158,6 +160,14 @@ export default {
       } else {
         this.registerError = 'Email inválido.'
       }
+    },
+    getIP() {
+      fetch('https://api.ipify.org?format=json')
+        .then((x) => x.json())
+        .then(({ ip }) => {
+          console.log('Your IP: ' + ip)
+          this.newData.ip = ip
+        })
     },
   },
 }

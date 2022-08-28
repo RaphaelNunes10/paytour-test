@@ -3,8 +3,19 @@ import axios from 'axios'
 const register = async function ({ commit }, newData) {
   this.dispatch('Spinner/setSpinner', true)
 
+  const head = {
+    'Access-Control-Allow-Origin': '*',
+    'Content-Type': 'application/json',
+  }
+
   await axios
-    .post(``, newData)
+    .post(
+      `https://paytour-test-mmrxp3w8s-raphaelnunes10.vercel.app/api/curriculum/register`,
+      newData,
+      {
+        headers: head,
+      }
+    )
     .then((res) => {
       commit('SET_REGISTRATIONERROR', '')
       return res.data
