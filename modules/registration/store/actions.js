@@ -13,7 +13,7 @@ const register = async function ({ commit }, newData) {
 
   await axios
     .post(
-      `https://paytour-test-mmrxp3w8s-raphaelnunes10.vercel.app/api/curriculum/register`,
+      `https://paytour-test-j5e5ky8f7-raphaelnunes10.vercel.app/api/curriculum/register`,
       newData,
       {
         withCredentials: true,
