@@ -6,6 +6,9 @@ const register = async function ({ commit }, newData) {
   const head = {
     'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers':
+      'Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length',
   }
 
   await axios
@@ -13,6 +16,7 @@ const register = async function ({ commit }, newData) {
       `https://paytour-test-mmrxp3w8s-raphaelnunes10.vercel.app/api/curriculum/register`,
       newData,
       {
+        withCredentials: true,
         headers: head,
       }
     )
