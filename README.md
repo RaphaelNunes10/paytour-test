@@ -1,68 +1,55 @@
-# paytour-test
+## Introdução
 
-## Build Setup
+Esse projeto se destina à Paytour como teste prático, bem como um repositório de facil acesso para aprender sobre o básico de Vue.JS, Nuxt e Axios.
 
-```bash
-# install dependencies
-$ yarn install
+O projeto foi criado utilizando Visual Studio como IDE com Vue.JS e Nuxt em seu núcleo, Vuetify para elementos visuais e Axios para requisições à API.
+Tudo citado a cima é providenciado pelo pacote Vue CLI.
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+## Requerimentos
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+- [VSCode IDE](https://code.visualstudio.com/Download)
+- [GIT](https://git-scm.com/downloads)
+- [Node.JS + NPM](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/en/docs/install#windows-stable) `Opcional`
+- [Vue CLI](https://cli.vuejs.org)
 
-# generate static project
-$ yarn generate
-```
+## Instalação
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+- Baixe e instale as ferramentas requeridas;
+- No VSCode, abra uma nova pasta/crie um novo projeto;
+- Abra o terminal (Terminal -> Novo Terminal);
+- Inicialize a pasta como um novo repositório:
 
-## Special Directories
+> git init
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+- Clone este repositório:
 
-### `assets`
+> git clone https://github.com/RaphaelNunes10/paytour-test.git
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+- Instale os pacotes do projeto:
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+> npm install
+> ou
+> yarn install
 
-### `components`
+- Rode o projeto:
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+> npm run dev
+> ou
+> yarn dev
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+- O projeto abrirá por padrão em http://localhost:3000/ ou http://127.0.0.1:3000/.
 
-### `layouts`
+OBS.: Se você já tiver um projeto rodando no endereço padrão de _localhost_ na porta 3000 o projeto abrirá em uma nova porta, então fique atento no que apareçe no terminal.
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+## _Overview_
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
+Este projeto utiliza uma variável que deve ser incluída em um arquivo .env(na pasta raíz) ou nas variáveis de ambiente do serviço de armazenamento:
 
-### `pages`
+> BASE_API_URL=-rota-api-
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+O projeto em Laravel que disponibiliza o serviço de API, incluindo armazenamento em banco de dados e envio de email se encontra em: https://github.com/RaphaelNunes10/paytour-test-api
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+Quando o serviço é inicializado localmente, a variável deve receber o seguinte valor, por padrão:
 
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+> BASE_API_URL=http://127.0.0.1:8000/api

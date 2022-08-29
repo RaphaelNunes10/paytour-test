@@ -6,8 +6,8 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    titleTemplate: '%s - paytour-test',
-    title: 'paytour-test',
+    titleTemplate: '%s - Red Hilt',
+    title: 'Teste Paytour',
     htmlAttrs: {
       lang: 'en',
     },

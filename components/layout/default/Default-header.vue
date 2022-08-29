@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-app-bar>
+    <v-app-bar color="red" dark>
       <v-toolbar-title v-text="title" />
       <v-spacer />
       <v-switch
@@ -21,7 +21,7 @@ export default {
     return {
       drawer: false,
       rightDrawer: false,
-      title: 'Cadastro de Curriculum',
+      title: 'Teste Paytour',
     }
   },
 }

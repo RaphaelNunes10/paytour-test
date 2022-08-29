@@ -3,13 +3,12 @@
     <v-row justify="center">
       <v-col align="center">
         <v-card>
-          <v-toolbar flat dense>
+          <v-toolbar color="red" dark flat dense>
             <v-spacer />
             <v-toolbar-title>Cadastrar Curriculum</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
           <v-container class="py-5">
-            {{ newData.arquivo }}
             <v-form ref="form" lazy-validation>
               <v-text-field
                 v-model="newData.nome"
@@ -59,6 +58,7 @@
                 truncate-length="15"
                 label="Curriculum"
                 :rules="[rules.required]"
+                :clearable="false"
                 filled
                 dense
                 @change="uploadFile"
@@ -73,13 +73,13 @@
             </v-form>
           </v-container>
           <v-toolbar flat>
-            <v-toolbar-items>
-              <v-btn text @click="registerDialog = false">Cancelar</v-btn>
-            </v-toolbar-items>
             <v-spacer />
             <v-toolbar-items>
-              <v-btn text @click="checkAndRegister()">Cadastrar</v-btn>
+              <v-btn color="green" text @click="checkAndRegister()"
+                >Cadastrar</v-btn
+              >
             </v-toolbar-items>
+            <v-spacer />
           </v-toolbar>
         </v-card>
       </v-col>
@@ -104,7 +104,11 @@ export default {
         cargo: '',
         escolaridade: '',
         obs: '',
-        arquivo: '',
+        arquivo: {
+          nome: '',
+          base64: '',
+          mime: '',
+        },
       },
 
       escolaridade: {
@@ -166,7 +170,6 @@ export default {
       fetch('https://api.ipify.org?format=json')
         .then((x) => x.json())
         .then(({ ip }) => {
-          console.log('Your IP: ' + ip)
           this.newData.ip = ip
         })
     },
@@ -184,11 +187,12 @@ export default {
       }
 
       reader.onload = () => {
-        this.newData.arquivo = reader.result
-      }
-
-      reader.onerror = function (error) {
-        console.log('Error: ', error)
+        this.newData.arquivo.nome = files[0].name
+        this.newData.arquivo.base64 = reader.result.replace(
+          'data:application/pdf;base64,',
+          ''
+        )
+        this.newData.arquivo.mime = files[0].type
       }
     },
   },
