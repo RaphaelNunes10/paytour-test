@@ -9,11 +9,12 @@
             <v-spacer />
           </v-toolbar>
           <v-container class="py-5">
+            {{ newData.arquivo }}
             <v-form ref="form" lazy-validation>
               <v-text-field
                 v-model="newData.nome"
                 label="Nome *"
-                :rules="[rules.required, rules.counter]"
+                :rules="[rules.required]"
                 @keyup.enter="checkAndRegister()"
               />
               <v-text-field
@@ -54,13 +55,13 @@
                 @keyup.enter="checkAndRegister()"
               />
               <v-file-input
-                v-model="newData.arquivo"
                 accept=".doc, .docx, .pdf"
                 truncate-length="15"
                 label="Curriculum"
-                :rules="[rules.maxSize]"
+                :rules="[rules.required]"
                 filled
                 dense
+                @change="uploadFile"
               />
               <v-row v-if="registerError" justify="center">
                 <v-col cols="9">
@@ -168,6 +169,27 @@ export default {
           console.log('Your IP: ' + ip)
           this.newData.ip = ip
         })
+    },
+    uploadFile(e) {
+      const reader = new FileReader()
+      const files = event.target.files || event.dataTransfer.files
+
+      if (files[0].size >= 1000000) {
+        alert('O arquivo excede o tamanho máximo de 1 MB.')
+        return
+      }
+
+      if (files[0]) {
+        reader.readAsDataURL(files[0])
+      }
+
+      reader.onload = () => {
+        this.newData.arquivo = reader.result
+      }
+
+      reader.onerror = function (error) {
+        console.log('Error: ', error)
+      }
     },
   },
 }

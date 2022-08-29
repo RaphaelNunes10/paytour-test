@@ -20,6 +20,10 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  publicRuntimeConfig: {
+    baseApiUrl: process.env.BASE_API_URL || 'http://localhost:3000',
+  },
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [],
 

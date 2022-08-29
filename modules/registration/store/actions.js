@@ -5,21 +5,18 @@ const register = async function ({ commit }, newData) {
 
   const head = {
     'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
     'Content-Type': 'application/json',
     'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
     'Access-Control-Allow-Headers':
-      'Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length',
+      'Access-Control-Allow-Origin, Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length',
   }
 
   await axios
-    .post(
-      `https://paytour-test-j5e5ky8f7-raphaelnunes10.vercel.app/api/curriculum/register`,
-      newData,
-      {
-        withCredentials: true,
-        headers: head,
-      }
-    )
+    .post(this.$config.baseApiUrl + `/curriculum/register`, newData, {
+      withCredentials: true,
+      headers: head,
+    })
     .then((res) => {
       commit('SET_REGISTRATIONERROR', '')
       return res.data
